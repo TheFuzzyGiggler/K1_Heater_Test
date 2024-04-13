@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Automatically install the Klipper K1 Heater Test
 #
 # Copyright (C) 2024 TheFuzzyGiggler <github.com/TheFuzzyGiggler>
