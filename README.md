@@ -12,7 +12,7 @@ chmod +x install.sh
 ./install.sh
 ```
 ## Uninstall
-To remove the probing patch and revert back to the original file
+To remove the heater patch and revert back to the original file
 ```
 cd ~
 cd K1_Heater_Test
