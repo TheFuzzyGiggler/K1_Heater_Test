@@ -1,5 +1,5 @@
 #!/bin/bash
-# Automatically install the Klipper probing test patch
+# Automatically install the Klipper K1 Heater Test
 #
 # Copyright (C) 2024 TheFuzzyGiggler <github.com/TheFuzzyGiggler>
 #
@@ -33,14 +33,14 @@ ACTION="${1:-install}"  # Default to "install" if no argument is provided
 case "$ACTION" in
     install)
         echo "Installing..."
-        # Backup existing homing.py if it exists
-        if [ -f "${KLIPPER_PATH}/klippy/extras/homing.py" ]; then
-            echo "Backing up existing homing.py to homing.py.bak..."
-            cp -f "${KLIPPER_PATH}/klippy/extras/homing.py" "${KLIPPER_PATH}/klippy/extras/homing.py.bak"
+        # Backup existing heater_bed.py if it exists
+        if [ -f "${KLIPPER_PATH}/klippy/extras/heater_bed.py" ]; then
+            echo "Backing up existing heater_bed.py to heater_bed.py.bak..."
+            cp -f "${KLIPPER_PATH}/klippy/extras/heater_bed.py" "${KLIPPER_PATH}/klippy/extras/heater_bed.py.bak"
         fi
-        # Link homing.py to klipper
-        echo "Linking probing patch to Klipper..."
-        ln -sf "${SRCDIR}/homing.py" "${KLIPPER_PATH}/klippy/extras/homing.py"
+        # Link heater_bed.py to klipper
+        echo "Linking heater patch to Klipper..."
+        ln -sf "${SRCDIR}/heater_bed.py" "${KLIPPER_PATH}/klippy/extras/heater_bed.py"
 
         # Restart klipper
         echo "Restarting Klipper..."
@@ -49,14 +49,14 @@ case "$ACTION" in
 
     uninstall)
         echo "Uninstalling..."
-        # Remove homing.py
-        echo "Removing probing patch from Klipper..."
-        rm -f "${KLIPPER_PATH}/klippy/extras/homing.py"
+        # Remove heater_bed.py
+        echo "Removing heater patch from Klipper..."
+        rm -f "${KLIPPER_PATH}/klippy/extras/heater_bed.py"
 
         # Check if backup exists and restore it
-        if [ -f "${KLIPPER_PATH}/klippy/extras/homing.py.bak" ]; then
-            echo "Restoring original homing.py from backup..."
-            mv -f "${KLIPPER_PATH}/klippy/extras/homing.py.bak" "${KLIPPER_PATH}/klippy/extras/homing.py"
+        if [ -f "${KLIPPER_PATH}/klippy/extras/heater_bed.py.bak" ]; then
+            echo "Restoring original heater_bed.py from backup..."
+            mv -f "${KLIPPER_PATH}/klippy/extras/heater_bed.py.bak" "${KLIPPER_PATH}/klippy/extras/heater_bed.py"
         fi
 
         # Restart klipper
